@@ -18,6 +18,7 @@ export const profile = {
     githubHandle: "Coderencrypt",
     linkedin: "https://linkedin.com/in/ayush-dubey-1348ay/",
     linkedinHandle: "ayush-dubey-1348ay",
+    email: "ayushdubey3369@gmail.com",
   },
 } as const;
 

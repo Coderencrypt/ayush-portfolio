@@ -1,4 +1,4 @@
-import { ArrowUpRight, Github, Linkedin, type LucideIcon } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, type LucideIcon } from "lucide-react";
 
 import { profile } from "@/content/portfolio";
 import { Container, Reveal } from "./primitives";
@@ -15,6 +15,12 @@ const channels: { label: string; handle: string; href: string; icon: LucideIcon 
     handle: profile.links.linkedinHandle,
     href: profile.links.linkedin,
     icon: Linkedin,
+  },
+  {
+    label: "Email",
+    handle: profile.links.email,
+    href: `mailto:${profile.links.email}`,
+    icon: Mail,
   },
 ];
 
@@ -41,18 +47,18 @@ export function Contact() {
             together.
           </h2>
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            I'm currently open to UI / Frontend Engineer opportunities. The best way to reach me is
-            through GitHub or LinkedIn.
+            I'm currently open to UI / Frontend Engineer opportunities. Reach out through GitHub,
+            LinkedIn or email.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {channels.map((channel, index) => (
             <Reveal key={channel.label} delay={index * 0.08}>
               <a
                 href={channel.href}
-                target="_blank"
-                rel="noreferrer"
+                target={channel.href.startsWith("http") ? "_blank" : undefined}
+                rel={channel.href.startsWith("http") ? "noreferrer" : undefined}
                 className="group flex items-center justify-between gap-4 rounded-3xl border border-border bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-glow focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none sm:p-8"
               >
                 <div className="flex items-center gap-5">
