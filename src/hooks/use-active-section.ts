@@ -15,7 +15,10 @@ export function useActiveSection(ids: readonly string[]) {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActive(visible[0].target.id);
+        const hashTarget = window.location.hash.slice(1);
+        const targetInView = visible.find((entry) => entry.target.id === hashTarget);
+        const current = targetInView ?? visible[0];
+        if (current) setActive(current.target.id);
       },
       { rootMargin: "-25% 0px -65% 0px", threshold: 0 },
     );
